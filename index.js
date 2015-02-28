@@ -1,7 +1,11 @@
 var app = require('http').createServer(handler);
 var io = require('socket.io').listen(app);
 var fs = require('fs');
+var NodeRSA = require('node-rsa');
+
 var users = [];
+
+
 
 function handler (req, res) {
   fs.readFile("http://localhost:8000/templates/rsa.html",
