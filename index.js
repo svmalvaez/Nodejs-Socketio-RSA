@@ -24,11 +24,14 @@ io.on('connection', function(socket){
   console.log('a user connected');
 	socket.on("new_user",function(data){
 	  	console.log("DATA: ", data);
-      data.id ++;
-      console.log(data.id); 
 	  	users.push(data);
       socket.emit("connected_users",users);
 	  });
+  socket.on("cypher_message",function(data){
+    console.log("Message: ",data);
+    socket.emit("message", data);
+    console.log("emitio");
+  });
 });
 
 app.listen(3000, function(){
